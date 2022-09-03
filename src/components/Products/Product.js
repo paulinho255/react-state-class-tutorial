@@ -1,7 +1,7 @@
 import React from 'react'
 import './Product.css'
 
-const Product = () => {
+const Product = () => 
     (
         <div className='wrapper'>
             <div>
@@ -15,6 +15,5 @@ const Product = () => {
             <button>Add</button> <button>Remove</button>
         </div>
     )
-}
 
 export default Product
