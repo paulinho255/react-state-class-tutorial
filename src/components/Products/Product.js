@@ -1,19 +1,45 @@
-import React from 'react'
-import './Product.css'
+import React, { Component } from "react";
+import "./Product.css";
 
-const Product = () => 
-    (
-        <div className='wrapper'>
-            <div>
-                Shopping Cart: 0 total items.
-            </div>
-            <div>Total: 0</div>
+export default class Product extends Component {
+  state = {
+    cart: [],
+    total: 0,
+  };
 
-            <div className='product'>
-                <span role='img' aria-label='ice cream'>🍦</span>
-            </div>
-            <button>Add</button> <button>Remove</button>
+  add = () => {
+    this.setState({
+      cart: ["ice cream"],
+      total: 5,
+    });
+  };
+  remove = () => {
+    this.setState({
+      cart: [],
+    });
+  };
+
+  currencyOptions = {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  };
+  getTotal = () => {
+    return this.state.total.toLocaleString(undefined, this.currencyOptions);
+  };
+
+  render() {
+    return (
+      <div className="wrapper">
+        <div>Shopping Cart: {this.state.cart.length} total items.</div>
+        <div>Total: {this.getTotal()}</div>
+        <div className="product">
+          <span role="img" aria-label="ice cream">
+            🍦
+          </span>
         </div>
-    )
-
-export default Product
+        <button onClick={this.add}>Add</button>{" "}
+        <button onClick={this.remove}>Remove</button>
+      </div>
+    );
+  }
+}

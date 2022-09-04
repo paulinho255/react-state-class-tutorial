@@ -1,11 +1,9 @@
-import React from 'react'
-import Product from '../Products/Product';
-import './App.css';
+import React from "react";
+import Product from "../Products/Product";
+import "./App.css";
 
 function App() {
-  return (
-    <Product />
-  );
+  return <Product />;
 }
 
 export default App;
