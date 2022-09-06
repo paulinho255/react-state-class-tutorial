@@ -31,10 +31,7 @@ export default class Product extends Component {
     maximumFractionDigits: 2,
   };
   getTotal = () => {
-    const total = this.state.cart.reduce(
-      (totalCost, item) => totalCost + item.price,
-      0
-    );
+    const total = this.state.cart.reduce((totalCost, item) => totalCost + item.price,0);
     return total.toLocaleString(undefined, this.currencyOptions);
   };
 
