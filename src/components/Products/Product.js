@@ -8,15 +8,20 @@ export default class Product extends Component {
     total: 0,
   };
 
-  add = () => {
-    this.setState({
-      cart: ["ice cream"],
-      total: 5,
-    });
+  add = (product) => {
+    this.setState((state) => ({
+      cart: [...state.cart, product.nome],
+      total: state.total + product.price,
+    }));
   };
-  remove = () => {
-    this.setState({
-      cart: [],
+  remove = (product) => {
+    this.setState((state) => {
+      const cart = [...state.cart];
+      cart.splice(cart.indexOf(product.nome));
+      return ({
+        cart,
+        total: state.total - product.price,
+      });
     });
   };
 
@@ -41,8 +46,8 @@ export default class Product extends Component {
                   {product.emoji}
                 </span>
               </div>
-              <button onClick={this.add}>Add</button>
-              <button onClick={this.remove}>Remove</button>
+              <button onClick={() => this.add(product)}>Add</button>
+              <button onClick={() => this.remove(product)}>Remove</button>
             </div>
           ))}
         </div>
