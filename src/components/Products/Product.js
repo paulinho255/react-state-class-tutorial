@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Product.css";
+import products from "./data";
 
 export default class Product extends Component {
   state = {
@@ -32,13 +33,19 @@ export default class Product extends Component {
       <div className="wrapper">
         <div>Shopping Cart: {this.state.cart.length} total items.</div>
         <div>Total: {this.getTotal()}</div>
-        <div className="product">
-          <span role="img" aria-label="ice cream">
-            🍦
-          </span>
+        <div>
+          {products.map((product) => (
+            <div key={product.nome}>
+              <div className="product">
+                <span role="img" aria-label={product.nome}>
+                  {product.emoji}
+                </span>
+              </div>
+              <button onClick={this.add}>Add</button>
+              <button onClick={this.remove}>Remove</button>
+            </div>
+          ))}
         </div>
-        <button onClick={this.add}>Add</button>{" "}
-        <button onClick={this.remove}>Remove</button>
       </div>
     );
   }
